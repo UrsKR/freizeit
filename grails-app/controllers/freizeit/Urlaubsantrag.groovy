@@ -19,14 +19,18 @@ class Urlaubsantrag {
     if (typ == 'Erholungsurlaub') {
       resturlaub -= numberOfDays
     }
-    resturlaub
+    jahresanspruch != 0 ? resturlaub : null
   }
 
   def getJahresanspruch() {
-    jahresanspruch != 0 ? jahresanspruch : null
+    getNullOrValue jahresanspruch
   }
 
   def getVorjahresanspruch() {
-    vorjahresanspruch != 0 ? vorjahresanspruch : null
+    getNullOrValue vorjahresanspruch
+  }
+
+  private def getNullOrValue(int value) {
+    value != 0 ? value : null
   }
 }

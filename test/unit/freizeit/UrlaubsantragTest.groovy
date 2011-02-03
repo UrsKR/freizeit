@@ -45,4 +45,19 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
     def antrag = new Urlaubsantrag(firstDay: day, lastDay: day.plus(1), jahresanspruch: 2, typ: 'Erholungsurlaub')
     assertEquals(0, antrag.resturlaub)
   }
+
+  void testDoesNotStateResturlaubIfNoneIsGiven() {
+    def antrag = new Urlaubsantrag(vorjahresanspruch: 0)
+    assertNull antrag.vorjahresanspruch
+  }
+
+  void testDoesNotStateJahresurlaubIfNoneIsGiven() {
+    def antrag = new Urlaubsantrag(jahresanspruch: 0)
+    assertNull antrag.jahresanspruch
+  }
+
+  void testDoesNotStateResturlaubIfJahresUrlaubUnknown() {
+    def antrag = new Urlaubsantrag(jahresanspruch: 0)
+    assertNull antrag.resturlaub
+  }
 }
