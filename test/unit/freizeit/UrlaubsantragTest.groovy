@@ -18,6 +18,12 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
     assertEquals(1, antrag.numberOfDays)
   }
 
+  void testRespectsHolidaysForCalculation() {
+    def day = new GregorianCalendar(2011, Calendar.JANUARY, 1).time
+    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day)
+    assertEquals(0, antrag.numberOfDays)
+  }
+
   void testCalculatesTwoDaysIfLastDayFollowsFirstDay() {
     def day = new Date()
     def antrag = new Urlaubsantrag(firstDay: day, lastDay: day.plus(1))

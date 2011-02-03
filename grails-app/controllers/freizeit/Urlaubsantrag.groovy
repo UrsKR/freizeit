@@ -1,6 +1,7 @@
 package freizeit
 
 class Urlaubsantrag {
+
   def mitarbeiter
   int vorjahresanspruch
   int jahresanspruch
@@ -9,7 +10,7 @@ class Urlaubsantrag {
   Date lastDay
 
   int getNumberOfDays() {
-    return (lastDay - firstDay).toInteger() + 1
+    new FeiertagService().getWorkdays(firstDay..lastDay)
   }
 
   def getResturlaub() {

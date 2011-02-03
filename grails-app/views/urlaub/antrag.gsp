@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ur
-  Date: 03.02.11
-  Time: 09:30
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
+<head>
+  <link rel="stylesheet" href="<g:createLinkTo dir='css' file='urlaubsformular.css'/>"/>
+</head>
+<body>
 <h1>Bitte füll den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
 <g:pdfForm controller='urlaub' action='pdf' method='post'>
-  <table border="1">
+  <table border="1" style="border-collapse: collapse;">
     <tr>
       <td>
         Dein Name
@@ -65,4 +61,5 @@
   </table>
   <g:submitButton name="Bereit zum Ausdruck" value="Bereit zum Ausdruck"/>
 </g:pdfForm>
+</body>
 </html>
