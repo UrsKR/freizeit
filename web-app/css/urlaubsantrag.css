@@ -1,0 +1,34 @@
+@page {
+    size: 148mm 210mm;
+    margin: 0.25in;
+}
+
+.title {
+    border: black solid 1px;
+    background-color: #d3d3d3;
+    text-align: center;
+}
+
+.body {
+    margin-top: 1cm;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkbox {
+    width: 0.5cm;
+    height: 0.5cm;
+    border: #d3d3d3 solid 1px;
+    text-align: center;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 0.5px solid black;
+}
+
+td {
+    width: 7.5cm;
+    height: 0.5cm;
+    padding-left: 0.2cm;
+}
