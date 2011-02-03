@@ -7,7 +7,7 @@ class UrlMappings {
 			}
 		}
 
-		"/"(view:"/index")
+		"/"(view:"/urlaub/antrag")
 		"500"(view:'/error')
 	}
 }
