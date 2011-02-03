@@ -15,9 +15,18 @@ class Urlaubsantrag {
 
   def getResturlaub() {
     int available = vorjahresanspruch + jahresanspruch
+    int resturlaub = available;
     if (typ == 'Erholungsurlaub') {
-      return available - numberOfDays
+      resturlaub -= numberOfDays
     }
-    return available
+    resturlaub
+  }
+
+  def getJahresanspruch() {
+    jahresanspruch != 0 ? jahresanspruch : null
+  }
+
+  def getVorjahresanspruch() {
+    vorjahresanspruch != 0 ? vorjahresanspruch : null
   }
 }
