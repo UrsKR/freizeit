@@ -8,41 +8,17 @@
   <table>
     <g:render template="zeile" model="${[label: 'Mitarbeiter', content:antrag.mitarbeiter]}"/>
     <g:render template="zeile" model="${[label: 'Urlaubsanspruch aus Vorjahr', content:antrag.vorjahresanspruch]}"/>
-    <g:render template="zeile" model="${[label: ' Urlaubsanspruch pro Jahr', content:antrag.jahresanspruch]}"/>
-    <tr>
-      <td>
-        Erholungsurlaub
-      </td>
-      <td>
-        <g:render template="typcheckbox" model="${[checked:'Erholungsurlaub'==antrag.typ]}"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Freizeit
-      </td>
-      <td>
-        <g:render template="typcheckbox" model="${[checked:'Überstundenausgleich'==antrag.typ]}"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Zeitraum
-      </td>
-      <td>
-        <urlaub:formatDate date="${antrag.firstDay}"/> - <urlaub:formatDate date="${antrag.lastDay}"/>
-      </td>
-    </tr>
+    <g:render template="zeile" model="${[label: 'Urlaubsanspruch pro Jahr', content:antrag.jahresanspruch]}"/>
+    <g:set var="urlaubscheckbox">${g.render(template: "typcheckbox", model: [checked: 'Erholungsurlaub' == antrag.typ])}</g:set>
+    <g:render template="zeile" model="${[label: 'Erholungsurlaub', content:urlaubscheckbox]}"/>
+    <g:set var="freizeitcheckbox">${g.render(template: "typcheckbox", model: [checked: 'Überstundenausgleich' == antrag.typ])}</g:set>
+    <g:render template="zeile" model="${[label: 'Erholungsurlaub', content:freizeitcheckbox]}"/>
+    <g:set var="zeitraum">${urlaub.formatDate(date: antrag.firstDay)} - ${urlaub.formatDate(date: antrag.lastDay)}</g:set>
+    <g:render template="zeile" model="${[label: 'Zeitraum', content:zeitraum]}"/>
     <g:render template="zeile" model="${[label: 'Anzahl Tage', content:antrag.numberOfDays]}"/>
     <g:render template="zeile" model="${[label: 'Noch bestehender Resturlaub', content:antrag.resturlaub]}"/>
-    <tr>
-      <td>
-        Datum der Mitteilung
-      </td>
-      <td>
-        <urlaub:formatDate date="${new Date()}"/>
-      </td>
-    </tr>
+    <g:set var="today" value="${urlaub.formatDate(date:new Date())}"/>
+    <g:render template="zeile" model="${[label: 'Datum der Mitteilung', content:today]}"/>
     <g:render template="zeile" model="${[label: 'Unterschrift Antragsteller']}"/>
     <g:render template="zeile" model="${[label: 'Genehmigt']}"/>
   </table>
