@@ -1,12 +1,8 @@
 package freizeit
 
-import freizeit.UrlaubController.Urlaubsantrag
 import grails.test.GrailsUnitTestCase
 
 class UrlaubsantragTest extends GrailsUnitTestCase {
-
-  def day = new Date()
-  def antrag = new Urlaubsantrag(mitarbeiter: 'Anwender', jahresanspruch: 28, vorjahresanspruch: 3, firstDay: day, lastDay: day, typ: "nix")
 
   void setUp() {
     super.setUp()
@@ -17,6 +13,30 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
   }
 
   void testCalculatesSingleDayIfStartAndEndEqual() {
+    def day = new Date()
+    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day)
+    assertEquals(1, antrag.numberOfDays)
+  }
 
+  void testCalculatesTwoDaysIfLastDayFollowsFirstDay() {
+    def day = new Date()
+    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day.plus(1))
+    assertEquals(2, antrag.numberOfDays)
+  }
+
+  void testDoesNotReduceAnspruchIfTypeIsNotErholungsurlaub() {
+    def antrag = new Urlaubsantrag(jahresanspruch: 5)
+    assertEquals(5, antrag.resturlaub)
+  }
+
+  void testAddsResturlaubToAnspruch() {
+    def antrag = new Urlaubsantrag(vorjahresanspruch: 5, jahresanspruch: 2)
+    assertEquals(7, antrag.resturlaub)
+  }
+
+  void testDeductsDurationIfTypeIsErholungsurlaub() {
+    def day = new Date()
+    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day.plus(1), jahresanspruch: 2, typ: 'Erholungsurlaub')
+    assertEquals(0, antrag.resturlaub)
   }
 }
