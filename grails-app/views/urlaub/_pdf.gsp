@@ -46,8 +46,8 @@
         <g:set var="zeitraum">${urlaub.formatDate(date: antrag.firstDay)} - ${urlaub.formatDate(date: antrag.lastDay)}</g:set>
         <g:set var="today" value="${urlaub.formatDate(date:new Date())}"/>
         <g:render template="zeile" model="${[label: 'Mitarbeiter', content:antrag.mitarbeiter]}"/>
-        <g:render template="zeile" model="${[label: 'Urlaubsanspruch aus Vorjahr', content:antrag.vorjahresanspruch]}"/>
-        <g:render template="zeile" model="${[label: 'Urlaubsanspruch pro Jahr', content:antrag.jahresanspruch]}"/>
+        <g:render template="zeile" model="${[label: 'Resturlaub aus Vorjahr', content:antrag.vorjahresanspruch]}"/>
+        <g:render template="zeile" model="${[label: 'Verbleibender Urlaub in diesem Jahr', content:antrag.jahresanspruch]}"/>
         <g:render template="zeile" model="${[label: 'Erholungsurlaub', content:urlaubscheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Freizeit', content:freizeitcheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Zeitraum', content:zeitraum]}"/>
