@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Bitte füll den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
-<g:pdfForm controller='urlaub' action='pdf' method='post' filename="urlaubsantrag.pdf">
+<g:form controller='urlaub' action='pdf'>
     <table border="1" style="border-collapse: collapse;">
         <tr>
             <td>
@@ -61,6 +61,6 @@
         </tr>
     </table>
     <g:submitButton name="Bereit zum Ausdruck" value="Bereit zum Ausdruck"/>
-</g:pdfForm>
+</g:form>
 </body>
 </html>

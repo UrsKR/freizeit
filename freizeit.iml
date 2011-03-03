@@ -42,6 +42,9 @@
       <library name="Grails User Library">
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/bouncycastle/bcprov-jdk14/jars/bcprov-jdk14-136.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/bouncycastle/bcmail-jdk14/jars/bcmail-jdk14-136.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.lowagie/itext/jars/itext-2.1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
