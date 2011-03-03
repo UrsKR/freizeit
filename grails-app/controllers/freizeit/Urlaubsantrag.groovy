@@ -8,8 +8,20 @@ class Urlaubsantrag {
     int vorjahresanspruch
     int jahresanspruch
     def typ = "Erholungsurlaub"
-    Date firstDay = new Date() + 1
-    Date lastDay = new Date() + 1
+    Date firstDay
+    Date lastDay
+
+    {
+        def tomorrow = new Date() + 1
+        def calendar = new GregorianCalendar()
+        calendar.time = tomorrow
+        calendar.set Calendar.HOUR, 0
+        calendar.set Calendar.MINUTE, 0
+        calendar.set Calendar.SECOND, 0
+        calendar.set Calendar.MILLISECOND, 0
+        firstDay = calendar.time;
+        lastDay = calendar.time;
+    }
 
     int getNumberOfDays() {
         feiertagService.getWorkdays(firstDay..lastDay)
@@ -19,7 +31,7 @@ class Urlaubsantrag {
         int available = vorjahresanspruch + jahresanspruch
         int resturlaub = available
         int daysRequired = 0
-        if (typ=="Erholungsurlaub"){
+        if (typ == "Erholungsurlaub") {
             daysRequired = numberOfDays
         }
         resturlaub -= daysRequired
