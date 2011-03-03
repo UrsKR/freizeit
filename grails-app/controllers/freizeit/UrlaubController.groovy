@@ -16,9 +16,8 @@ class UrlaubController {
         if (!antrag.typ) {
             antrag.typ = "Erholungsurlaub"
         }
-        def days = feiertagService.getWorkdays(antrag.firstDay..antrag.lastDay)
-        def text = days + " Tag"
-        if (days > 1) {
+        def text = antrag.numberOfDays + " Tag"
+        if (antrag.numberOfDays > 1) {
             text += 'e';
         }
         flash.message = text
