@@ -3,7 +3,7 @@ package freizeit
 class UrlaubController {
 
     static defaultAction = 'antrag'
-    def urlaubstageService
+    def feiertagService
 
     def antrag = { Urlaubsantrag antrag ->
         def tomorrow = new Date() + 1
@@ -13,10 +13,10 @@ class UrlaubController {
         if (!antrag.lastDay) {
             antrag.lastDay = tomorrow;
         }
-        if (!antrag.typ){
+        if (!antrag.typ) {
             antrag.typ = "Erholungsurlaub"
         }
-        def days = urlaubstageService.getRequiredUrlaubstage(antrag.typ, antrag.firstDay..antrag.lastDay)
+        def days = feiertagService.getWorkdays(antrag.firstDay..antrag.lastDay)
         def text = days + " Tag"
         if (days > 1) {
             text += 'e';
