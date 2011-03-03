@@ -5,6 +5,20 @@
     <link rel="stylesheet" href="<g:createLinkTo dir='css' file='urlaubsformular.css'/>"/>
     <link rel="stylesheet" href="<g:createLinkTo dir='css' file='main.css'/>"/>
     <calendar:resources/>
+    <g:javascript>
+        function showRequiredDays() {
+            var firstDay = document.getElementById('firstDay_value').value
+            var lastDay = document.getElementById('lastDay_value').value
+            new Ajax.Request('/freizeit/urlaub/requiredDays',
+            {
+                method:'get',
+                parameters: {firstDay: firstDay, lastDay:lastDay},
+                onSuccess: function(transport) {
+                    document.getElementById('numberOfDays').innerHTML = transport.responseText
+                }
+            });
+        }
+    </g:javascript>
 </head>
 <body>
 <h1>Bitte fülle den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
@@ -49,7 +63,7 @@
                 Erster freier Tag
             </td>
             <td>
-                <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y"/>
+                <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y" onChange="showRequiredDays()"/>
             </td>
         </tr>
         <tr>
@@ -57,15 +71,14 @@
                 Letzter freier Tag
             </td>
             <td>
-                <calendar:datePicker name="lastDay" defaultValue="${antrag.lastDay}" dateFormat="%d.%m.%Y"/>
+                <calendar:datePicker name="lastDay" defaultValue="${antrag.lastDay}" dateFormat="%d.%m.%Y" onChange="showRequiredDays()"/>
             </td>
         </tr>
     </table>
-    <g:actionSubmit value="Wie viele Tage" action="antrag"/>
     <g:actionSubmit value="Bereit zum Ausdruck" action="pdf"/>
 </g:form>
 <g:if test="${flash.message}">
-    <div class="message">${flash.message}</div>
+    <div id="numberOfDays" class="message">${flash.message}</div>
 </g:if>
 <div>Probleme? Wünsche? <a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
 </body>
