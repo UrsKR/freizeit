@@ -67,6 +67,6 @@
 <g:if test="${flash.message}">
     <div class="message">${flash.message}</div>
 </g:if>
-<div>Probleme? Wünsche?<a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
+<div>Probleme? Wünsche? <a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
 </body>
 </html>
