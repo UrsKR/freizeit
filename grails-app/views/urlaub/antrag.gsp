@@ -3,6 +3,7 @@
 <head>
     <g:javascript library="prototype"/>
     <link rel="stylesheet" href="<g:createLinkTo dir='css' file='urlaubsformular.css'/>"/>
+    <link rel="stylesheet" href="<g:createLinkTo dir='css' file='main.css'/>"/>
     <calendar:resources/>
 </head>
 <body>
@@ -62,9 +63,9 @@
     </table>
     <g:actionSubmit value="Wie viele Tage" action="antrag"/>
     <g:actionSubmit value="Bereit zum Ausdruck" action="pdf"/>
-    <g:if test="${flash.message}">
-        <h1>${flash.message}</h1>
-    </g:if>
 </g:form>
+<g:if test="${flash.message}">
+    <div class="message">${flash.message}</div>
+</g:if>
 </body>
 </html>
