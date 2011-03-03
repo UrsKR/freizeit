@@ -2,6 +2,9 @@ package freizeit
 
 class Urlaubsantrag {
 
+    def feiertagService
+    def urlaubstageService
+
     def mitarbeiter
     int vorjahresanspruch
     int jahresanspruch
@@ -10,13 +13,13 @@ class Urlaubsantrag {
     Date lastDay
 
     int getNumberOfDays() {
-        new FeiertagService().getWorkdays(firstDay..lastDay)
+        feiertagService.getWorkdays(firstDay..lastDay)
     }
 
     def getResturlaub() {
         int available = vorjahresanspruch + jahresanspruch
         int resturlaub = available;
-        int daysRequired = new UrlaubstageService().getRequiredUrlaubstage(typ, firstDay..lastDay)
+        int daysRequired = urlaubstageService.getRequiredUrlaubstage(typ, firstDay..lastDay)
         resturlaub -= daysRequired
         jahresanspruch.toInteger() != 0 ? resturlaub : null
     }
