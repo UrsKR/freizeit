@@ -1,19 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <g:javascript library="prototype"/>
     <link rel="stylesheet" href="<g:createLinkTo dir='css' file='urlaubsformular.css'/>"/>
     <calendar:resources/>
 </head>
 <body>
-<h1>Bitte füll den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
-<g:form controller='urlaub' action='pdf'>
+<h1>Bitte fülle den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
+<g:form controller="urlaub">
     <table border="1" style="border-collapse: collapse;">
         <tr>
             <td>
                 Dein Name
             </td>
             <td>
-                <g:textField name="mitarbeiter"/>
+                <g:textField name="mitarbeiter" value="${antrag.mitarbeiter}"/>
             </td>
         </tr>
         <tr>
@@ -21,7 +22,7 @@
                 Resturlaub aus dem Vorjahr
             </td>
             <td>
-                <g:textField name="vorjahresanspruch"/>
+                <g:textField name="vorjahresanspruch" value="${antrag.vorjahresanspruch}"/>
             </td>
         </tr>
         <tr>
@@ -29,7 +30,7 @@
                 Urlaub pro Jahr
             </td>
             <td>
-                <g:textField name="jahresanspruch"/>
+                <g:textField name="jahresanspruch" value="${antrag.jahresanspruch}"/>
             </td>
         </tr>
         <tr>
@@ -37,18 +38,17 @@
                 Ich mache
             </td>
             <td>
-                <g:radioGroup name="typ" labels="['Erholungsurlaub','Überstundenausgleich']" values="['Erholungsurlaub', 'Überstundenausgleich']" value="Erholungsurlaub">
+                <g:radioGroup name="typ" labels="['Erholungsurlaub','Überstundenausgleich']" values="['Erholungsurlaub', 'Überstundenausgleich']" value="${antrag.typ}">
                     <p>${it.radio} ${it.label}</p>
                 </g:radioGroup>
             </td>
         </tr>
-        <g:set var="tomorrow" value="${new Date().plus(1)}"/>
         <tr>
             <td>
                 Erster freier Tag
             </td>
             <td>
-                <calendar:datePicker name="firstDay" defaultValue="${tomorrow}" dateFormat="%d.%m.%Y"/>
+                <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y"/>
             </td>
         </tr>
         <tr>
@@ -56,11 +56,15 @@
                 Letzter freier Tag
             </td>
             <td>
-                <calendar:datePicker name="lastDay" defaultValue="${tomorrow}" dateFormat="%d.%m.%Y"/>
+                <calendar:datePicker name="lastDay" defaultValue="${antrag.lastDay}" dateFormat="%d.%m.%Y"/>
             </td>
         </tr>
     </table>
-    <g:submitButton name="Bereit zum Ausdruck" value="Bereit zum Ausdruck"/>
+    <g:actionSubmit value="Wie viele Tage" action="antrag"/>
+    <g:actionSubmit value="Bereit zum Ausdruck" action="pdf"/>
+    <g:if test="${flash.message}">
+        <h1>${flash.message}</h1>
+    </g:if>
 </g:form>
 </body>
 </html>
