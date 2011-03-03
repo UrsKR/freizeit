@@ -1,6 +1,6 @@
 package freizeit
 
-class UrlaubsPdfTaglibTagLib {
+class UrlaubsPdfTagLib {
 
   static namespace = 'urlaub'
 
