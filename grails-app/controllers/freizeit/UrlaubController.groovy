@@ -6,6 +6,7 @@ class UrlaubController {
 
     static defaultAction = 'antrag'
     def feiertagService
+    def pdfRenderingService
 
     def antrag = { Urlaubsantrag antrag ->
         def days = antrag.numberOfDays
@@ -23,12 +24,12 @@ class UrlaubController {
     }
 
     def pdf = { Urlaubsantrag antrag ->
-        renderPdf(template: '/urlaub/pdf', model: [antrag: antrag])
+       pdfRenderingService.render([template: '/urlaub/pdf', model: [antrag: antrag]], response)
     }
 
     private String getTextForNumberOfDays(days) {
         def text = days + " Tag"
-        if (days > 1) {
+        if (days != 1) {
             text += 'e';
         }
         text
