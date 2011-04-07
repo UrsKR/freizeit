@@ -1,6 +1,7 @@
 package freizeit
 
 import grails.test.GrailsUnitTestCase
+import static freizeit.test.UrlaubsantragObjectMother.*
 
 class UrlaubsantragTest extends GrailsUnitTestCase {
 
@@ -13,8 +14,7 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
     }
 
     void testRequestsDurationFromService() {
-        def antrag = new Urlaubsantrag()
-        antrag.feiertagService = [getWorkdays: {range -> 17}]
+        def antrag = createAntragForDays(17)
         assertEquals antrag.getNumberOfDays(), 17
     }
 
@@ -29,8 +29,9 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
     }
 
     void testDeductsDurationIfTypeIsErholungsurlaub() {
-        def antrag = new Urlaubsantrag(jahresanspruch: 2, typ: 'Erholungsurlaub')
-        antrag.feiertagService = [getWorkdays: {range -> 2}]
+        def antrag = createAntragForDays(2)
+        antrag.jahresanspruch = 2
+        antrag.typ = 'Erholungsurlaub'
         assertEquals(0, antrag.resturlaub)
     }
 
@@ -55,14 +56,15 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
     }
 
     void testIsAbleToCalculateHalfDaysForRequiredDays() {
-        def antrag = new Urlaubsantrag(jahresanspruch: 5, typ: "Erholungsurlaub")
-        antrag.feiertagService = [getWorkdays: {range -> 0.5}]
+        def antrag = createAntragForDays(0.5)
+        antrag.jahresanspruch = 5
+        antrag.typ = 'Erholungsurlaub'
         assertEquals(4.5, antrag.resturlaub)
     }
 
     void testReducesNumberOfDaysByHalfADayIfFlagIsSet() {
-        def antrag = new Urlaubsantrag(firstOrLastDayIsHalfDay: true)
-        antrag.feiertagService = [getWorkdays: {range -> 1}]
+        def antrag = createAntragForDays(1)
+        antrag.firstOrLastDayIsHalfDay = true
         assertEquals(0.5, antrag.numberOfDays)
     }
 

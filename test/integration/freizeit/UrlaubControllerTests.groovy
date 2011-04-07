@@ -1,6 +1,7 @@
 package freizeit
 
 import grails.test.ControllerUnitTestCase
+import static freizeit.test.UrlaubsantragObjectMother.*
 
 class UrlaubControllerTests extends ControllerUnitTestCase {
     def controller = new UrlaubController()
@@ -17,9 +18,5 @@ class UrlaubControllerTests extends ControllerUnitTestCase {
         assertEquals '0 Tage', controller.flash.message
     }
 
-    private Urlaubsantrag createAntragForDays(duration) {
-        def antrag = new Urlaubsantrag()
-        antrag.feiertagService = [getWorkdays: {range -> duration }]
-        return antrag
-    }
+
 }
