@@ -21,8 +21,11 @@ class UrlaubsTagLib {
     }
 
     private def printWithLigature(days) {
-        def formattedDays = g.formatNumber(format: '0', number: days, roundingMode: RoundingMode.HALF_DOWN)
-        formattedDays + '½'
+        if (days == 0.5){
+            return '½'
+        }
+        def dayString = (days as String) - '.5'
+        dayString + '½'
     }
 
     private boolean fractionIsOneHalf(days) {

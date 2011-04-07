@@ -33,4 +33,9 @@ class UrlaubsTagLibTests extends TagLibUnitTestCase {
         String output = lib.formatDayCount(days: 5.5)
         assert output == '5½'
     }
+
+    void testRendersHalfWithoutLeadingZero() {
+        String output = lib.formatDayCount(days: 0.5)
+        assert output == '½'
+    }
 }
