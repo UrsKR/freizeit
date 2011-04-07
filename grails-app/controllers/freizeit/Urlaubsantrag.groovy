@@ -10,7 +10,7 @@ class Urlaubsantrag {
     def typ = "Erholungsurlaub"
     Date firstDay
     Date lastDay
-    boolean lastDayIsHalfDay
+    boolean firstOrLastDayIsHalfDay
 
     {
         def tomorrow = new Date() + 1
@@ -21,7 +21,7 @@ class Urlaubsantrag {
 
     float getNumberOfDays() {
         float days = feiertagService.getWorkdays(firstDay..lastDay)
-        if (lastDayIsHalfDay) {
+        if (firstOrLastDayIsHalfDay) {
             days -= 0.5
         }
         days

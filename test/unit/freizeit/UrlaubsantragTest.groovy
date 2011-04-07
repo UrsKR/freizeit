@@ -61,7 +61,7 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
     }
 
     void testReducesNumberOfDaysByHalfADayIfFlagIsSet() {
-        def antrag = new Urlaubsantrag(lastDayIsHalfDay: true)
+        def antrag = new Urlaubsantrag(firstOrLastDayIsHalfDay: true)
         antrag.feiertagService = [getWorkdays: {range -> 1}]
         assertEquals(0.5, antrag.numberOfDays)
     }
