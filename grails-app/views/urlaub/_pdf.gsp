@@ -48,6 +48,7 @@
         <g:set var="jahresanspruch" value="${urlaub.formatDayCount(days: antrag.jahresanspruch)}"/>
         <g:set var="vorjahresanspruch" value="${urlaub.formatDayCount(days:antrag.vorjahresanspruch)}"/>
         <g:set var="anzahlTage" value="${urlaub.formatDayCount(days:antrag.numberOfDays)}"/>
+        <g:set var="resturlaub" value="${urlaub.formatDayCount(days:antrag.resturlaub)}"/>
         <g:render template="zeile" model="${[label: 'Mitarbeiter', content:antrag.mitarbeiter]}"/>
         <g:render template="zeile" model="${[label: 'Resturlaub aus Vorjahr', content:vorjahresanspruch]}"/>
         <g:render template="zeile" model="${[label: 'Verbleibender Urlaub in diesem Jahr', content:jahresanspruch]}"/>
@@ -55,7 +56,7 @@
         <g:render template="zeile" model="${[label: 'Freizeit', content:freizeitcheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Zeitraum', content:zeitraum]}"/>
         <g:render template="zeile" model="${[label: 'Anzahl Tage', content:anzahlTage]}"/>
-        <g:render template="zeile" model="${[label: 'Noch bestehender Resturlaub', content:antrag.resturlaub]}"/>
+        <g:render template="zeile" model="${[label: 'Noch bestehender Resturlaub', content:resturlaub]}"/>
         <g:render template="zeile" model="${[label: 'Datum der Mitteilung', content:today]}"/>
         <g:render template="zeile" model="${[label: 'Unterschrift Antragsteller']}"/>
         <g:render template="zeile" model="${[label: 'Genehmigt']}"/>

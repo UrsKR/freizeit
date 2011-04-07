@@ -1,7 +1,6 @@
 package freizeit
 
 import grails.test.GrailsUnitTestCase
-import java.text.DecimalFormat
 
 class UrlaubsantragTest extends GrailsUnitTestCase {
 
@@ -59,6 +58,12 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
         def antrag = new Urlaubsantrag(jahresanspruch: 5, typ: "Erholungsurlaub")
         antrag.feiertagService = [getWorkdays: {range -> 0.5}]
         assertEquals(4.5, antrag.resturlaub)
+    }
+
+    void testReducesNumberOfDaysByHalfADayIfFlagIsSet() {
+        def antrag = new Urlaubsantrag(lastDayIsHalfDay: true)
+        antrag.feiertagService = [getWorkdays: {range -> 1}]
+        assertEquals(0.5, antrag.numberOfDays)
     }
 
     private Date tomorrowWithoutTime() {

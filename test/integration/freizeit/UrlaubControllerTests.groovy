@@ -17,12 +17,6 @@ class UrlaubControllerTests extends ControllerUnitTestCase {
         assertEquals '0 Tage', controller.flash.message
     }
 
-    void testUsesPluralForFractionDays() {
-        Urlaubsantrag antrag = createAntragForDays(1.5)
-        controller.antrag(antrag)
-        assertEquals '1.5 Tage', controller.flash.message
-    }
-
     private Urlaubsantrag createAntragForDays(duration) {
         def antrag = new Urlaubsantrag()
         antrag.feiertagService = [getWorkdays: {range -> duration }]
