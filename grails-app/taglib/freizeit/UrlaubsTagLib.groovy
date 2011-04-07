@@ -5,9 +5,10 @@ import java.math.RoundingMode
 class UrlaubsTagLib {
 
     static namespace = 'urlaub'
+    static final String FORMAT = 'dd.MM.yyyy'
 
     def formatDate = { arguments ->
-        out << arguments.date.format('dd.MM.yyyy')
+        out << arguments.date.format(FORMAT)
     }
 
     def formatDayCount = { arguments ->

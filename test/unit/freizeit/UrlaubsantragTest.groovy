@@ -62,12 +62,6 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
         assertEquals(4.5, antrag.resturlaub)
     }
 
-    void testReducesNumberOfDaysByHalfADayIfFlagIsSet() {
-        def antrag = createAntragForDays(1)
-        antrag.firstOrLastDayIsHalfDay = true
-        assertEquals(0.5, antrag.numberOfDays)
-    }
-
     private Date tomorrowWithoutTime() {
         def tomorrow = new Date() + 1
         tomorrow.clearTime()

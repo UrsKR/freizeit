@@ -2,7 +2,7 @@ package freizeit
 
 class Urlaubsantrag {
 
-    def feiertagService
+    def urlaubstageService
 
     String mitarbeiter
     float vorjahresanspruch = 0
@@ -20,11 +20,7 @@ class Urlaubsantrag {
     }
 
     float getNumberOfDays() {
-        float days = feiertagService.getWorkdays(firstDay..lastDay)
-        if (firstOrLastDayIsHalfDay) {
-            days -= 0.5
-        }
-        days
+        urlaubstageService.getUrlaubstage(firstOrLastDayIsHalfDay, firstDay..lastDay)
     }
 
     def getResturlaub() {
