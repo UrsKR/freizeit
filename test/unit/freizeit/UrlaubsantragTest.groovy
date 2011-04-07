@@ -44,6 +44,22 @@ class UrlaubsantragTest extends GrailsUnitTestCase {
         assertEquals new Urlaubsantrag().lastDay, tomorrow
     }
 
+    void testIsAbleToCalculateHalfDaysInJahresanspruch() {
+        def antrag = new Urlaubsantrag(jahresanspruch: 5.5, typ: "Nicht Urlaub")
+        assertEquals(5.5, antrag.resturlaub)
+    }
+
+    void testIsAbleToCalculateHalfDaysInResturlaub() {
+        def antrag = new Urlaubsantrag(vorjahresanspruch: 5.5, typ: "Nicht Urlaub")
+        assertEquals(5.5, antrag.resturlaub)
+    }
+
+    void testIsAbleToCalculateHalfDaysForRequiredDays() {
+        def antrag = new Urlaubsantrag(jahresanspruch: 5, typ: "Erholungsurlaub")
+        antrag.feiertagService = [getWorkdays: {range -> 0.5}]
+        assertEquals(4.5, antrag.resturlaub)
+    }
+
     private Date tomorrowWithoutTime() {
         def tomorrow = new Date() + 1
         tomorrow.clearTime()
