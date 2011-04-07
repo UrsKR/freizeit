@@ -1,7 +1,5 @@
 package freizeit
 
-import java.math.RoundingMode
-
 class UrlaubsTagLib {
 
     static namespace = 'urlaub'
@@ -20,18 +18,18 @@ class UrlaubsTagLib {
         }
     }
 
-    private def printWithLigature(days) {
-        if (days == 0.5){
-            return '½'
-        }
-        def dayString = (days as String) - '.5'
-        dayString + '½'
-    }
-
     private boolean fractionIsOneHalf(days) {
         def hasFraction = (days as int) != days
         def fractionIsOneHalf = (2 * days) == ((2 * days) as int)
         hasFraction && fractionIsOneHalf
+    }
+
+    private def printWithLigature(days) {
+        if (days == 0.5) {
+            return '½'
+        }
+        def dayString = (days as String) - '.5'
+        dayString + '½'
     }
 
     private def printWithFraction(days) {
