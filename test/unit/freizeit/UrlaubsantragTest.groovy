@@ -4,45 +4,49 @@ import grails.test.GrailsUnitTestCase
 
 class UrlaubsantragTest extends GrailsUnitTestCase {
 
-  void setUp() {
-    super.setUp()
-  }
+    void setUp() {
+        super.setUp()
+    }
 
-  void tearDown() {
-    super.tearDown()
-  }
+    void tearDown() {
+        super.tearDown()
+    }
 
-  void testCalculatesSingleDayIfStartAndEndEqual() {
-    def day = new Date()
-    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day)
-    assertEquals(1, antrag.numberOfDays)
-  }
+    void testRequestsDurationFromService() {
+        def antrag = new Urlaubsantrag()
+        antrag.feiertagService = [getWorkdays: {range -> 17}]
+        assertEquals antrag.getNumberOfDays(), 17
+    }
 
-  void testRespectsHolidaysForCalculation() {
-    def day = new GregorianCalendar(2011, Calendar.JANUARY, 1).time
-    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day)
-    assertEquals(0, antrag.numberOfDays)
-  }
+    void testDoesNotReduceAnspruchIfTypeIsNotErholungsurlaub() {
+        def antrag = new Urlaubsantrag(jahresanspruch: 5, typ: "Nicht Urlaub")
+        assertEquals(5, antrag.resturlaub)
+    }
 
-  void testCalculatesTwoDaysIfLastDayFollowsFirstDay() {
-    def day = new Date()
-    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day.plus(1))
-    assertEquals(2, antrag.numberOfDays)
-  }
+    void testAddsResturlaubToAnspruch() {
+        def antrag = new Urlaubsantrag(vorjahresanspruch: 5, jahresanspruch: 2, typ: "Nicht Urlaub")
+        assertEquals(7, antrag.resturlaub)
+    }
 
-  void testDoesNotReduceAnspruchIfTypeIsNotErholungsurlaub() {
-    def antrag = new Urlaubsantrag(jahresanspruch: 5)
-    assertEquals(5, antrag.resturlaub)
-  }
+    void testDeductsDurationIfTypeIsErholungsurlaub() {
+        def antrag = new Urlaubsantrag(jahresanspruch: 2, typ: 'Erholungsurlaub')
+        antrag.feiertagService = [getWorkdays: {range -> 2}]
+        assertEquals(0, antrag.resturlaub)
+    }
 
-  void testAddsResturlaubToAnspruch() {
-    def antrag = new Urlaubsantrag(vorjahresanspruch: 5, jahresanspruch: 2)
-    assertEquals(7, antrag.resturlaub)
-  }
+    void testInitializesFirstDayToTomorrow() {
+        Date tomorrow = tomorrowWithoutTime()
+        assertEquals new Urlaubsantrag().firstDay, tomorrow
+    }
 
-  void testDeductsDurationIfTypeIsErholungsurlaub() {
-    def day = new Date()
-    def antrag = new Urlaubsantrag(firstDay: day, lastDay: day.plus(1), jahresanspruch: 2, typ: 'Erholungsurlaub')
-    assertEquals(0, antrag.resturlaub)
-  }
+    void testInitializesLastDayToTomorrow() {
+        def tomorrow = tomorrowWithoutTime()
+        assertEquals new Urlaubsantrag().lastDay, tomorrow
+    }
+
+    private Date tomorrowWithoutTime() {
+        def tomorrow = new Date() + 1
+        tomorrow.clearTime()
+        return tomorrow
+    }
 }
