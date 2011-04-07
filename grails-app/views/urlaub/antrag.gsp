@@ -23,7 +23,7 @@
 <body>
 <h1>Bitte fülle den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
 <g:form controller="urlaub">
-    <table border="1" style="border-collapse: collapse;">
+    <table border="0">
         <tr>
             <td>
                 Dein Name
@@ -65,6 +65,10 @@
             <td>
                 <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y" onChange="showRequiredDays()"/>
             </td>
+            <td rowspan="2" style="font-size:40px; padding-top:25px;">
+                                }
+                <span id="numberOfDays" >${flash.message}</span>
+            </td>
         </tr>
         <tr>
             <td>
@@ -78,7 +82,7 @@
     <g:actionSubmit value="Bereit zum Ausdruck" action="pdf"/>
 </g:form>
 <g:if test="${flash.message}">
-    <div id="numberOfDays" class="message">${flash.message}</div>
+
 </g:if>
 <div>Probleme? Wünsche? <a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
 </body>
