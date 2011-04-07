@@ -24,11 +24,12 @@ class UrlaubController {
     }
 
     def pdf = { Urlaubsantrag antrag ->
-       pdfRenderingService.render([template: '/urlaub/pdf', model: [antrag: antrag]], response)
+        pdfRenderingService.render([template: '/urlaub/pdf', model: [antrag: antrag]], response)
     }
 
     private String getTextForNumberOfDays(days) {
-        def text = days + " Tag"
+        def formattedDays = g.formatNumber(format: '0.#', number: days)
+        def text = formattedDays + " Tag"
         if (days != 1) {
             text += 'e';
         }

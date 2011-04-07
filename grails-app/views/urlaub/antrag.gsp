@@ -38,7 +38,7 @@
                     Resturlaub aus dem Vorjahr
                 </td>
                 <td>
-                    <g:textField name="vorjahresanspruch" value="${antrag.vorjahresanspruch}"/>
+                    <g:textField name="vorjahresanspruch" value="${g.formatNumber(format:'0.#', number: antrag.vorjahresanspruch)}"/>
                 </td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
                     Resturlaub in diesem Jahr
                 </td>
                 <td>
-                    <g:textField name="jahresanspruch" value="${antrag.jahresanspruch}"/>
+                    <g:textField name="jahresanspruch" value="${g.formatNumber(format:'0.#', number: antrag.jahresanspruch)}"/>
                 </td>
             </tr>
             <tr>

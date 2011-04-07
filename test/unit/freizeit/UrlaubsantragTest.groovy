@@ -1,6 +1,7 @@
 package freizeit
 
 import grails.test.GrailsUnitTestCase
+import java.text.DecimalFormat
 
 class UrlaubsantragTest extends GrailsUnitTestCase {
 
