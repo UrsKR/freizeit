@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class=content>
-    <h1>Bitte fülle den Urlaubsantrag aus und klicke auf "Bereit zum Ausdruck".</h1>
+    <h1>Bitte fülle den Urlaubsantrag aus und klicke auf "PDF erstellen".</h1>
     <g:form controller="urlaub">
         <table border="0">
             <tr>
@@ -80,9 +80,9 @@
                 </td>
             </tr>
         </table>
-        <g:actionSubmit value="Bereit zum Ausdruck" action="pdf"/>
+        <g:actionSubmit class="submit" value="PDF erstellen" action="pdf"/>
     </g:form>
-    <div>Probleme? Wünsche? <a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
+    <div class="contact">Probleme? Wünsche? <a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
 </div>
 </body>
 </html>

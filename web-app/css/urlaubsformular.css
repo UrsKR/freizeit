@@ -1,3 +1,19 @@
 .content {
-    margin: 20px
+    margin: 20px;
+    cursor: default;
+}
+
+.submit {
+    font-weight: bold;
+    margin-left: 183px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.contact {
+    margin-top: 10px
+}
+
+.datePicker {
+    cursor: pointer;
 }
