@@ -25,10 +25,11 @@ class UrlaubsTagLib {
     }
 
     private def printWithLigature(days) {
-        if (days == 0.5) {
-            return '½'
+        String dayString = ''
+        if (days != 0.5) {
+            int integerValue = days - 0.5
+            dayString += integerValue
         }
-        def dayString = (days as String) - '.5'
         dayString + '½'
     }
 
