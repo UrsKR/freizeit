@@ -45,13 +45,16 @@
         <g:set var="freizeitcheckbox">${g.render(template: "typcheckbox", model: [checked: 'Überstundenausgleich' == antrag.typ])}</g:set>
         <g:set var="zeitraum">${urlaub.formatDate(date: antrag.firstDay)} - ${urlaub.formatDate(date: antrag.lastDay)}</g:set>
         <g:set var="today" value="${urlaub.formatDate(date:new Date())}"/>
+        <g:set var="jahresanspruch" value="${urlaub.formatDayCount(days: antrag.jahresanspruch)}"/>
+        <g:set var="vorjahresanspruch" value="${urlaub.formatDayCount(days:antrag.vorjahresanspruch)}"/>
+        <g:set var="anzahlTage" value="${urlaub.formatDayCount(days:antrag.numberOfDays)}"/>
         <g:render template="zeile" model="${[label: 'Mitarbeiter', content:antrag.mitarbeiter]}"/>
-        <g:render template="zeile" model="${[label: 'Resturlaub aus Vorjahr', content:antrag.vorjahresanspruch]}"/>
-        <g:render template="zeile" model="${[label: 'Verbleibender Urlaub in diesem Jahr', content:antrag.jahresanspruch]}"/>
+        <g:render template="zeile" model="${[label: 'Resturlaub aus Vorjahr', content:vorjahresanspruch]}"/>
+        <g:render template="zeile" model="${[label: 'Verbleibender Urlaub in diesem Jahr', content:jahresanspruch]}"/>
         <g:render template="zeile" model="${[label: 'Erholungsurlaub', content:urlaubscheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Freizeit', content:freizeitcheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Zeitraum', content:zeitraum]}"/>
-        <g:render template="zeile" model="${[label: 'Anzahl Tage', content:antrag.numberOfDays]}"/>
+        <g:render template="zeile" model="${[label: 'Anzahl Tage', content:anzahlTage]}"/>
         <g:render template="zeile" model="${[label: 'Noch bestehender Resturlaub', content:antrag.resturlaub]}"/>
         <g:render template="zeile" model="${[label: 'Datum der Mitteilung', content:today]}"/>
         <g:render template="zeile" model="${[label: 'Unterschrift Antragsteller']}"/>

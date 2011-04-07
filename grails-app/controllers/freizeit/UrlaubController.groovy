@@ -28,7 +28,7 @@ class UrlaubController {
     }
 
     private String getTextForNumberOfDays(days) {
-        def formattedDays = g.formatNumber(format: '0.#', number: days)
+        def formattedDays = urlaub.formatDayCount(days:days)
         def text = formattedDays + " Tag"
         if (days != 1) {
             text += 'e';
