@@ -67,7 +67,7 @@ class FeiertagServiceTests extends GrailsUnitTestCase {
         assertWorkdays(start..end, 0)
     }
 
-    void testTreatsAllerheiligenAsHoliday() {
+    void testTreatsAllSaintsAsHoliday() {
         def start = getDate(2012, Calendar.NOVEMBER, 01)
         def end = getDate(2012, Calendar.NOVEMBER, 01)
         assertWorkdays(start..end, 0)
@@ -103,7 +103,7 @@ class FeiertagServiceTests extends GrailsUnitTestCase {
         assertWorkdays(start..end, 0)
     }
 
-    void testTreatsKarfreitagAsHoliday() {
+    void testTreatsGoodFridayAsHoliday() {
         def start = getDate(2012, Calendar.APRIL, 6)
         def end = getDate(2012, Calendar.APRIL, 6)
         assertWorkdays(start..end, 0)
