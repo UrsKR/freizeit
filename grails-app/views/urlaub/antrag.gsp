@@ -54,7 +54,7 @@
                     Ich mache
                 </td>
                 <td>
-                    <g:radioGroup name="typ" labels="['Erholungsurlaub','Überstundenausgleich']" values="['Erholungsurlaub', 'Überstundenausgleich']" value="${antrag.typ}">
+                    <g:radioGroup name="typ" labels="['Erholungsurlaub','Überstundenausgleich','Sonderurlaub']" values="['Erholungsurlaub', 'Überstundenausgleich','Sonderurlaub']" value="${antrag.typ}">
                         <p>${it.radio} ${it.label}</p>
                     </g:radioGroup>
                 </td>

@@ -43,6 +43,7 @@
     <table>
         <g:set var="urlaubscheckbox">${g.render(template: "typcheckbox", model: [checked: 'Erholungsurlaub' == antrag.typ])}</g:set>
         <g:set var="freizeitcheckbox">${g.render(template: "typcheckbox", model: [checked: 'Überstundenausgleich' == antrag.typ])}</g:set>
+        <g:set var="sonderurlaubcheckbox">${g.render(template: "typcheckbox", model: [checked: 'Sonderurlaub' == antrag.typ])}</g:set>
         <g:set var="zeitraum">${urlaub.formatDate(date: antrag.firstDay)} - ${urlaub.formatDate(date: antrag.lastDay)}</g:set>
         <g:set var="today" value="${urlaub.formatDate(date:new Date())}"/>
         <g:set var="jahresanspruch" value="${urlaub.formatDayCount(days: antrag.jahresanspruch)}"/>
@@ -54,6 +55,7 @@
         <g:render template="zeile" model="${[label: 'Verbleibender Urlaub in diesem Jahr', content:jahresanspruch]}"/>
         <g:render template="zeile" model="${[label: 'Erholungsurlaub', content:urlaubscheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Freizeit', content:freizeitcheckbox]}"/>
+        <g:render template="zeile" model="${[label: 'Sonderurlaub', content:sonderurlaubcheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Zeitraum', content:zeitraum]}"/>
         <g:render template="zeile" model="${[label: 'Anzahl Tage', content:anzahlTage]}"/>
         <g:render template="zeile" model="${[label: 'Noch bestehender Resturlaub', content:resturlaub]}"/>
