@@ -58,7 +58,7 @@
         <g:render template="zeile" model="${[label: 'Sonderurlaub', content:sonderurlaubcheckbox]}"/>
         <g:render template="zeile" model="${[label: 'Zeitraum', content:zeitraum]}"/>
         <g:render template="zeile" model="${[label: 'Anzahl Tage', content:anzahlTage]}"/>
-        <g:render template="zeile" model="${[label: 'Noch bestehender Resturlaub', content:resturlaub]}"/>
+        <g:render template="zeile" model="${[label: 'Resturlaub nach diesem Urlaub', content:resturlaub]}"/>
         <g:render template="zeile" model="${[label: 'Datum der Mitteilung', content:today]}"/>
         <g:render template="zeile" model="${[label: 'Unterschrift Antragsteller']}"/>
         <g:render template="zeile" model="${[label: 'Genehmigt']}"/>
