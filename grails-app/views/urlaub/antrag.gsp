@@ -25,8 +25,8 @@
         function showRequiredDays() {
             var firstDay = document.getElementById('firstDay_value').value
             var lastDay = document.getElementById('lastDay_value').value
-            var firstDayIsHalfDay = document.getElementById('firstDayIsHalfDay').value
-            var lastDayIsHalfDay = document.getElementById('lastDayIsHalfDay').value
+            var firstDayIsHalfDay = document.getElementById('firstDayIsHalfDay').checked
+            var lastDayIsHalfDay = document.getElementById('lastDayIsHalfDay').checked
             new Ajax.Request('/freizeit/urlaub/requiredDays',
             {
                 method:'get',

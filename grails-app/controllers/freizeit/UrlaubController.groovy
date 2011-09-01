@@ -19,8 +19,8 @@ class UrlaubController {
         def format = new SimpleDateFormat(UrlaubsTagLib.FORMAT)
         def firstDay = format.parse(params.firstDay)
         def lastDay = format.parse(params.lastDay)
-        def firstDayIsHalf = params.firstDayIsHalfDay
-        def lastDayIsHalf = params.lastDayIsHalfDay
+        boolean firstDayIsHalf = params.boolean('firstDayIsHalfDay')
+        boolean lastDayIsHalf = params.boolean('lastDayIsHalfDay')
         def days = feiertagService.getWorkdays(firstDay..lastDay)
         if (firstDayIsHalf) {
             days -= 0.5;
