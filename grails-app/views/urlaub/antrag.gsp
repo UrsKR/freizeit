@@ -12,7 +12,7 @@
             var lastDayIsHalfDay = document.getElementById('lastDayIsHalfDay')
             var lastDayLabel= document.getElementById('lastDayLabel')
             if (firstDay == lastDay) {
-                lastDayIsHalfDay.value = false
+                lastDayIsHalfDay.checked = false
                 lastDayIsHalfDay.disabled = true
                 lastDayLabel.style.color="gray"
             }
