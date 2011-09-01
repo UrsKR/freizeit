@@ -89,9 +89,9 @@
                     <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y"
                                          onChange="activateHalfDays(); showRequiredDays();"/>
                 </td>
-                <td rowspan="4" style="font-size:120px; padding-top:40px;">
+                <td rowspan="4" style="font-size:120px; padding-top:43px;">
                     }
-                    <span id="numberOfDays" style="font-size:40px;">${flash.message}</span>
+                    <span id="numberOfDays" style="font-size:40px;position: relative;top:-20px">${flash.message}</span>
                 </td>
             </tr>
             <tr>
