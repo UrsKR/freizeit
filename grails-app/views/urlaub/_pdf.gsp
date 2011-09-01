@@ -44,7 +44,7 @@
         <g:set var="urlaubscheckbox">${g.render(template: "typcheckbox", model: [checked: 'Erholungsurlaub' == antrag.typ])}</g:set>
         <g:set var="freizeitcheckbox">${g.render(template: "typcheckbox", model: [checked: 'Überstundenausgleich' == antrag.typ])}</g:set>
         <g:set var="sonderurlaubcheckbox">${g.render(template: "typcheckbox", model: [checked: 'Sonderurlaub' == antrag.typ])}</g:set>
-        <g:set var="zeitraum">${urlaub.formatDate(date: antrag.firstDay)} - ${urlaub.formatDate(date: antrag.lastDay)}</g:set>
+        <g:set var="zeitraum">${urlaub.formatTimespan(antrag: antrag)}</g:set>
         <g:set var="today" value="${urlaub.formatDate(date:new Date())}"/>
         <g:set var="jahresanspruch" value="${urlaub.formatDayCount(days: antrag.jahresanspruch)}"/>
         <g:set var="vorjahresanspruch" value="${urlaub.formatDayCount(days:antrag.vorjahresanspruch)}"/>
