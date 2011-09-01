@@ -12,17 +12,17 @@ class UrlaubsTagLib {
         def firstDayIsHalf = antrag.firstDayIsHalfDay
         def lastDayIsHalf = antrag.lastDayIsHalfDay
         out << firstDate
-        if (firstDayIsHalf){
+        if (firstDayIsHalf) {
             out << "(Halb)"
         }
         if (firstDate != lastDate) {
             out << " - " + lastDate
-        }
-        if (lastDayIsHalf){
-            out << "(Halb)"
+            if (lastDayIsHalf) {
+                out << "(Halb)"
+            }
         }
     }
-    
+
     def formatDate = { arguments ->
         out << arguments.date.format(FORMAT)
     }
