@@ -4,9 +4,12 @@ class UrlaubstageService {
 
     def feiertagService
 
-    def getUrlaubstage(boolean firstOrLastDayIsHalf, Collection days) {
+    def getUrlaubstage(boolean firstDayIsHalf, boolean lastDayIsHalf, Collection days) {
         float dayCount = feiertagService.getWorkdays(days)
-        if (firstOrLastDayIsHalf) {
+        if (firstDayIsHalf) {
+            dayCount -= 0.5
+        }
+        if (lastDayIsHalf) {
             dayCount -= 0.5
         }
         dayCount

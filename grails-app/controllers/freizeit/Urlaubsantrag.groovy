@@ -10,7 +10,8 @@ class Urlaubsantrag {
     def typ = "Erholungsurlaub"
     Date firstDay
     Date lastDay
-    boolean firstOrLastDayIsHalfDay
+    boolean firstDayIsHalfDay
+    boolean lastDayIsHalfDay
 
     {
         def tomorrow = new Date() + 1
@@ -20,13 +21,14 @@ class Urlaubsantrag {
     }
 
     float getNumberOfDays() {
-        urlaubstageService.getUrlaubstage(firstOrLastDayIsHalfDay, firstDay..lastDay)
+        urlaubstageService.getUrlaubstage(firstDayIsHalfDay, lastDayIsHalfDay, firstDay..lastDay)
     }
 
     def getResturlaub() {
         float resturlaub = vorjahresanspruch + jahresanspruch
         float daysRequired = getDaysRequired()
-        resturlaub - daysRequired
+        def verbleibenderUrlaub = resturlaub - daysRequired
+        verbleibenderUrlaub
     }
 
     private float getDaysRequired() {

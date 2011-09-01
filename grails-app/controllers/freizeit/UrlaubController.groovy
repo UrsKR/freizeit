@@ -19,7 +19,15 @@ class UrlaubController {
         def format = new SimpleDateFormat(UrlaubsTagLib.FORMAT)
         def firstDay = format.parse(params.firstDay)
         def lastDay = format.parse(params.lastDay)
+        def firstDayIsHalf = params.firstDayIsHalfDay
+        def lastDayIsHalf = params.lastDayIsHalfDay
         def days = feiertagService.getWorkdays(firstDay..lastDay)
+        if (firstDayIsHalf) {
+            days -= 0.5;
+        }
+        if (lastDayIsHalf) {
+            days -= 0.5;
+        }
         render getTextForNumberOfDays(days)
     }
 
@@ -28,9 +36,9 @@ class UrlaubController {
     }
 
     private String getTextForNumberOfDays(days) {
-        def formattedDays = urlaub.formatDayCount(days:days)
+        def formattedDays = urlaub.formatDayCount(days: days)
         def text = formattedDays + " Tag"
-        if (days != 1) {
+        if (days != 1 && days != 0.5) {
             text += 'e';
         }
         text

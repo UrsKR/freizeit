@@ -6,13 +6,31 @@
     <link rel="stylesheet" href="<g:createLinkTo dir='css' file='main.css'/>"/>
     <calendar:resources/>
     <g:javascript>
+        function activateHalfDays() {
+            var firstDay = document.getElementById('firstDay_value').value
+            var lastDay = document.getElementById('lastDay_value').value
+            var lastDayIsHalfDay = document.getElementById('lastDayIsHalfDay')
+            var lastDayLabel= document.getElementById('lastDayLabel')
+            if (firstDay == lastDay) {
+                lastDayIsHalfDay.value = false
+                lastDayIsHalfDay.disabled = true
+                lastDayLabel.style.color="gray"
+            }
+            else {
+                lastDayIsHalfDay.disabled = false
+                lastDayLabel.style.color="black"
+            }
+        }
+
         function showRequiredDays() {
             var firstDay = document.getElementById('firstDay_value').value
             var lastDay = document.getElementById('lastDay_value').value
+            var firstDayIsHalfDay = document.getElementById('firstDayIsHalfDay').value
+            var lastDayIsHalfDay = document.getElementById('lastDayIsHalfDay').value
             new Ajax.Request('/freizeit/urlaub/requiredDays',
             {
                 method:'get',
-                parameters: {firstDay: firstDay, lastDay:lastDay},
+                parameters: {firstDay: firstDay, lastDay:lastDay, firstDayIsHalfDay:firstDayIsHalfDay, lastDayIsHalfDay:lastDayIsHalfDay},
                 onSuccess: function(transport) {
                     document.getElementById('numberOfDays').innerHTML = transport.responseText
                 }
@@ -20,6 +38,7 @@
         }
     </g:javascript>
 </head>
+
 <body>
 <div class=content>
     <h1>Bitte fülle den Urlaubsantrag aus und klicke auf "PDF erstellen".</h1>
@@ -38,7 +57,8 @@
                     Resturlaub aus dem Vorjahr
                 </td>
                 <td>
-                    <g:textField name="vorjahresanspruch" value="${urlaub.formatDayCount(days: antrag.vorjahresanspruch)}"/>
+                    <g:textField name="vorjahresanspruch"
+                                 value="${urlaub.formatDayCount(days: antrag.vorjahresanspruch)}"/>
                 </td>
             </tr>
             <tr>
@@ -54,7 +74,9 @@
                     Ich mache
                 </td>
                 <td>
-                    <g:radioGroup name="typ" labels="['Erholungsurlaub','Überstundenausgleich','Sonderurlaub']" values="['Erholungsurlaub', 'Überstundenausgleich','Sonderurlaub']" value="${antrag.typ}">
+                    <g:radioGroup name="typ" labels="['Erholungsurlaub','Überstundenausgleich','Sonderurlaub']"
+                                  values="['Erholungsurlaub', 'Überstundenausgleich','Sonderurlaub']"
+                                  value="${antrag.typ}">
                         <p>${it.radio} ${it.label}</p>
                     </g:radioGroup>
                 </td>
@@ -64,11 +86,21 @@
                     Erster freier Tag
                 </td>
                 <td>
-                    <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y" onChange="showRequiredDays()"/>
+                    <calendar:datePicker name="firstDay" defaultValue="${antrag.firstDay}" dateFormat="%d.%m.%Y"
+                                         onChange="activateHalfDays(); showRequiredDays();"/>
                 </td>
-                <td rowspan="2" style="font-size:40px; padding-top:25px;">
+                <td rowspan="4" style="font-size:120px; padding-top:40px;">
                     }
-                    <span id="numberOfDays">${flash.message}</span>
+                    <span id="numberOfDays" style="font-size:40px;">${flash.message}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <g:checkBox name="firstDayIsHalfDay"
+                                onChange="showRequiredDays()"/> <span>Der erste Tag ist ein halber Tag.</span>
                 </td>
             </tr>
             <tr>
@@ -76,13 +108,25 @@
                     Letzter freier Tag
                 </td>
                 <td>
-                    <calendar:datePicker name="lastDay" defaultValue="${antrag.lastDay}" dateFormat="%d.%m.%Y" onChange="showRequiredDays()"/>
+                    <calendar:datePicker name="lastDay" defaultValue="${antrag.lastDay}" dateFormat="%d.%m.%Y"
+                                         onChange="activateHalfDays(); showRequiredDays()"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <g:checkBox name="lastDayIsHalfDay"
+                                onChange="showRequiredDays()" disabled="true"/> <span id="lastDayLabel"
+                                                                                      style="color:gray;">Der letzte Tag ist ein halber Tag.</span>
                 </td>
             </tr>
         </table>
         <g:actionSubmit class="submit" value="PDF erstellen" action="pdf"/>
     </g:form>
-    <div class="contact">Probleme? Wünsche? <a href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
+    <div class="contact">Probleme? Wünsche? <a
+            href="http://code.google.com/p/freizeit/issues/entry">Bitte meldet euch!</a></div>
 </div>
 </body>
 </html>
