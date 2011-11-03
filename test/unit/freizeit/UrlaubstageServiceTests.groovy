@@ -3,18 +3,21 @@ package freizeit
 import grails.test.GrailsUnitTestCase
 
 class UrlaubstageServiceTests extends GrailsUnitTestCase {
+    def service
+
     protected void setUp() {
         super.setUp()
-    }
-
-    protected void tearDown() {
-        super.tearDown()
-    }
-
-    void testReducesNumberOfDaysByHalfADayIfFlagIsSet() {
-        def service = new UrlaubstageService()
+        service = new UrlaubstageService()
         service.feiertagService = [getWorkdays: {range -> 1}]
-        def tage = service.getUrlaubstage(true, new Date()..new Date())
+    }
+
+    void testReducesNumberOfDaysByHalfADayIfFirstDayIsHalfDay() {
+        def tage = service.getUrlaubstage(true, false, new Date()..new Date())
+        assertEquals(0.5, tage)
+    }
+
+    void testReducesNumberOfDaysByHalfADayIfLastDayIsHalfDay() {
+        def tage = service.getUrlaubstage(false, true, new Date()..new Date())
         assertEquals(0.5, tage)
     }
 }

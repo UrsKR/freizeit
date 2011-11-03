@@ -6,7 +6,7 @@ class UrlaubsantragObjectMother {
 
     static Urlaubsantrag createAntragForDays(duration) {
         def antrag = new Urlaubsantrag()
-        antrag.urlaubstageService = [getUrlaubstage: {half, range -> duration }]
+        antrag.urlaubstageService = [getUrlaubstage: {firstHalf, lastHalf, range -> duration }]
         return antrag
     }
 }
