@@ -26,7 +26,6 @@ class Urlaubsantrag {
 
     def getResturlaub() {
         float resturlaub = vorjahresanspruch + jahresanspruch
-        float daysRequired = getDaysRequired()
         def verbleibenderUrlaub = resturlaub - daysRequired
         verbleibenderUrlaub
     }
