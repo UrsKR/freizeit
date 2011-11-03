@@ -1,5 +1,6 @@
 package freizeit
-import static java.util.Calendar.*;
+import static java.util.Calendar.*
+import static freizeit.CalendarUtil.createCalendar;
 class FeiertagService {
 
   private static final def newYear = new DayInYear(1, JANUARY)
@@ -29,12 +30,6 @@ class FeiertagService {
   private int getDayOfWeek(date) {
     Calendar calendar = createCalendar(date)
     calendar.get(DAY_OF_WEEK)
-  }
-
-  private Calendar createCalendar(date) {
-    def calendar = Calendar.instance
-    calendar.setTime(date)
-    return calendar
   }
 
   def daysThatAreNotOnAWeekend = {

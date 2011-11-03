@@ -20,4 +20,9 @@ class UrlaubstageServiceTests extends GrailsUnitTestCase {
         def tage = service.getUrlaubstage(false, true, new Date()..new Date())
         assertEquals(0.5, tage)
     }
+
+    void testCountsZeroDaysIfThereAreNone() {
+        def tage = service.getUrlaubstage(false, true, [])
+        assertEquals(0.0, tage)
+    }
 }
