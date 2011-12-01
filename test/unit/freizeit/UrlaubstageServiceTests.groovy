@@ -8,7 +8,7 @@ class UrlaubstageServiceTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
         service = new UrlaubstageService()
-        service.feiertagService = [getWorkdays: {range -> 1}]
+        service.feiertagService = [getWorkdays: {range -> 1}, daysThatAreNotOnAWeekend: {Date date -> true}]
     }
 
     void testReducesNumberOfDaysByHalfADayIfFirstDayIsHalfDay() {

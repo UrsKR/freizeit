@@ -21,7 +21,8 @@ class UrlaubstageService {
         boolean containsChristmasEve = maybeChristmas as boolean
         boolean containsNewYearsEve = maybeNewYear as boolean
         boolean christmasEveIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(maybeChristmas)
-        if ((containsChristmasEve && christmasEveIsAWorkday) || (containsNewYearsEve)) {
+        boolean newYearsEveIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(maybeNewYear)
+        if ((containsChristmasEve && christmasEveIsAWorkday) || (containsNewYearsEve && newYearsEveIsAWorkday)) {
             dayCount -= 0.5
         }
         dayCount
