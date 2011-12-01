@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 class UrlaubController {
 
     static defaultAction = 'antrag'
-    def feiertagService
+    def urlaubstageService
     def pdfRenderingService
 
     def antrag = { Urlaubsantrag antrag ->
@@ -21,13 +21,7 @@ class UrlaubController {
         def lastDay = format.parse(params.lastDay)
         boolean firstDayIsHalf = params.boolean('firstDayIsHalfDay')
         boolean lastDayIsHalf = params.boolean('lastDayIsHalfDay')
-        def days = feiertagService.getWorkdays(firstDay..lastDay)
-        if (firstDayIsHalf) {
-            days -= 0.5;
-        }
-        if (lastDayIsHalf) {
-            days -= 0.5;
-        }
+        def days = urlaubstageService.getUrlaubstage(firstDayIsHalf, lastDayIsHalf, firstDay..lastDay)
         render getTextForNumberOfDays(days)
     }
 

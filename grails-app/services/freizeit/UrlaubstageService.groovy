@@ -27,8 +27,10 @@ class UrlaubstageService {
     private boolean shouldSubtractFor(Collection days, DayInYear halfDay) {
         Date mayBeHalfDay = days.find {Date day -> DayInYear.From(day) == halfDay}
         boolean rangeContainsHalfDay = mayBeHalfDay as boolean
-        boolean halfDayIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(mayBeHalfDay)
-        return rangeContainsHalfDay && halfDayIsAWorkday
+        if (!rangeContainsHalfDay){
+            return false;
+        }
+        return feiertagService.daysThatAreNotOnAWeekend(mayBeHalfDay)
     }
 
     private float getNumberOfDaysToSubtractFromLeaveDaysForFirstDay(Collection days, boolean isMarkedAsHalf) {
