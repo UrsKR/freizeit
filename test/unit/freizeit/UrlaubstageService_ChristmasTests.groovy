@@ -66,6 +66,12 @@ class UrlaubstageService_ChristmasTests extends GrailsUnitTestCase {
         assertEquals(1, tage)
     }
 
+    void testSubtractsAFullDayIfBothChristmasAndNewYearsEveAreWorkdays() {
+        service.feiertagService = [getWorkdays: {range -> 6}, daysThatAreNotOnAWeekend: {Date date -> true}]
+        def tage = service.getUrlaubstage(false, false, new Date(2010, DECEMBER, 24)..new Date(2010, DECEMBER, 31))
+        assertEquals(5, tage)
+    }
+
     private def createFeiertagServiceWithWorkdays(int workdays) {
         service.feiertagService = [getWorkdays: {range -> workdays}, daysThatAreNotOnAWeekend: {Date date -> true}]
     }

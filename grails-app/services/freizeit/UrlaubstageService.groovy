@@ -16,31 +16,32 @@ class UrlaubstageService {
         float dayCount = feiertagService.getWorkdays(days)
         dayCount -= getNumberOfDaysToSubtractFromLeaveDaysForFirstDay(days, firstDayIsHalf)
         dayCount -= getNumberOfDaysToSubtractFromLeaveDaysForLastDay(days, lastDayIsHalf)
-        Date maybeChristmas = days.find {Date day ->  DayInYear.From(day) == christmasEve}
-        Date maybeNewYear = days.find {Date day ->  DayInYear.From(day) == newYearsEve}
-        boolean containsChristmasEve = maybeChristmas as boolean
-        boolean containsNewYearsEve = maybeNewYear as boolean
-        boolean christmasEveIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(maybeChristmas)
-        boolean newYearsEveIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(maybeNewYear)
-        if ((containsChristmasEve && christmasEveIsAWorkday) || (containsNewYearsEve && newYearsEveIsAWorkday)) {
-            dayCount -= 0.5
+        halfWorkDays.each {
+            if (shouldSubtractFor(days, it)) {
+                dayCount -= 0.5
+            }
         }
         dayCount
     }
 
-    private float getNumberOfDaysToSubtractFromLeaveDaysForFirstDay(Collection days, boolean firstDayIsHalf) {
-        boolean firstDayIsAlreadyHalfDay = halfWorkDays.contains(DayInYear.From(days.first()))
-        if (firstDayIsHalf && !firstDayIsAlreadyHalfDay) {
-            return 0.5
-        }
-        else {
-            return 0
-        }
+    private boolean shouldSubtractFor(Collection days, DayInYear halfDay) {
+        Date mayBeHalfDay = days.find {Date day -> DayInYear.From(day) == halfDay}
+        boolean rangeContainsHalfDay = mayBeHalfDay as boolean
+        boolean halfDayIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(mayBeHalfDay)
+        return rangeContainsHalfDay && halfDayIsAWorkday
     }
 
-    private float getNumberOfDaysToSubtractFromLeaveDaysForLastDay(Collection days, boolean lastDayIsHalf) {
-        boolean lastDayIsAlreadyHalfDay = halfWorkDays.contains(DayInYear.From(days.last()))
-        if (lastDayIsHalf && !lastDayIsAlreadyHalfDay) {
+    private float getNumberOfDaysToSubtractFromLeaveDaysForFirstDay(Collection days, boolean isMarkedAsHalf) {
+        getNumberOfDaysToSubtract(days.first(), isMarkedAsHalf)
+    }
+
+    private float getNumberOfDaysToSubtractFromLeaveDaysForLastDay(Collection days, boolean isMarkedAsHalf) {
+        getNumberOfDaysToSubtract(days.last(), isMarkedAsHalf)
+    }
+
+    private BigDecimal getNumberOfDaysToSubtract(day, boolean isMarkedAsHalf) {
+        boolean dayIsAlreadyHalfDay = halfWorkDays.contains(DayInYear.From(day))
+        if (isMarkedAsHalf && !dayIsAlreadyHalfDay) {
             return 0.5
         }
         return 0
