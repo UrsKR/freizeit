@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3cb9723f-755d-45cf-9355-9bf9ef7f8899" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/freizeit-grailsPlugins.iml" afterPath="$PROJECT_DIR$/freizeit-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/freizeit.iml" afterPath="$PROJECT_DIR$/freizeit.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/freizeit/UrlaubController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/freizeit/UrlaubController.groovy" />
     </list>
     <ignored path="freizeit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,87 +76,7 @@
     <favorites_list name="freizeit" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UrlaubController.groovy" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/freizeit/UrlaubController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="24" selection-start="830" selection-end="830" vertical-scroll-proportion="0.18728523">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleControllerHandlerAdapter.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../grails-1.3.6/lib/org.springframework.web.servlet-3.0.5.RELEASE.jar!/org/springframework/web/servlet/mvc/SimpleControllerHandlerAdapter.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="-6.8">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataSource.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuildConfig.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="18" selection-start="522" selection-end="522" vertical-scroll-proportion="-7.48">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Urlaubsantrag.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/freizeit/Urlaubsantrag.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="antrag.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/urlaub/antrag.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="5.2040815">
-              <folding>
-                <marker date="1320304644788" expanded="true" signature="356:995" placeholder="{...}" />
-                <marker date="1320304644788" expanded="true" signature="692:853" placeholder="{...}" />
-                <marker date="1320304644788" expanded="true" signature="871:985" placeholder="{...}" />
-                <marker date="1320304644788" expanded="true" signature="1033:1791" placeholder="{...}" />
-                <marker date="1320304644788" expanded="true" signature="1433:1779" placeholder="{&quot;method&quot;: 'get'...}" />
-                <marker date="1320304644788" expanded="true" signature="1651:1765" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -712,7 +629,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-3" width="1928" height="1178" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -726,7 +643,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2502674" sideWeight="0.60076046" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2502674" sideWeight="0.60076046" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298479" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -762,7 +679,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cookie for the users name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cookies for the remaining days and the beginning of a new year" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -793,6 +710,7 @@
     <MESSAGE value="PDF and Website use the same calculation" />
     <MESSAGE value="Version 9" />
     <MESSAGE value="Cookie for the users name" />
+    <MESSAGE value="Cookies for the remaining days and the beginning of a new year" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -863,35 +781,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/urlaub/antrag.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="5.2040815">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.4586331">
           <folding>
-            <marker date="1320304644788" expanded="true" signature="356:995" placeholder="{...}" />
-            <marker date="1320304644788" expanded="true" signature="692:853" placeholder="{...}" />
-            <marker date="1320304644788" expanded="true" signature="871:985" placeholder="{...}" />
-            <marker date="1320304644788" expanded="true" signature="1033:1791" placeholder="{...}" />
-            <marker date="1320304644788" expanded="true" signature="1433:1779" placeholder="{&quot;method&quot;: 'get'...}" />
-            <marker date="1320304644788" expanded="true" signature="1651:1765" placeholder="{...}" />
+            <marker date="1320304644788" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1320304644788" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1320304644788" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1320304644788" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1320304644788" expanded="true" signature="-1:-1" placeholder="{&quot;method&quot;: 'get'...}" />
+            <marker date="1320304644788" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/freizeit/Urlaubsantrag.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
+        <state line="2" column="6" selection-start="24" selection-end="24" vertical-scroll-proportion="0.028099174">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.4925619">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="522" selection-end="522" vertical-scroll-proportion="-7.48">
+        <state line="11" column="18" selection-start="522" selection-end="522" vertical-scroll-proportion="0.3224138">
           <folding />
         </state>
       </provider>
@@ -905,7 +823,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../grails-1.3.6/lib/org.springframework.web.servlet-3.0.5.RELEASE.jar!/org/springframework/web/servlet/mvc/SimpleControllerHandlerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="-6.8">
+        <state line="11" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.29982364">
           <folding />
         </state>
       </provider>
