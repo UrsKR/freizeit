@@ -20,8 +20,10 @@ class UrlaubstageService {
         if (lastDayIsHalf && !lastDayIsChristmasEve) {
             dayCount -= 0.5
         }
-        boolean containsChristmasEve = days.find {Date day ->  DayInYear.From(day) == christmasEve} as boolean
-        if (containsChristmasEve) {
+        Date maybeChristmas = days.find {Date day ->  DayInYear.From(day) == christmasEve}
+        boolean containsChristmasEve = maybeChristmas as boolean
+        boolean christmasEveIsAWorkday = feiertagService.daysThatAreNotOnAWeekend(maybeChristmas)
+        if (containsChristmasEve && christmasEveIsAWorkday) {
             dayCount -= 0.5
         }
         dayCount
