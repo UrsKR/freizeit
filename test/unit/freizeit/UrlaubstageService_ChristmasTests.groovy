@@ -13,19 +13,19 @@ class UrlaubstageService_ChristmasTests extends GrailsUnitTestCase {
 
     void testReducesNumberOfDaysByHalfADayIfChristmasEveIsPartOfRange() {
         service.feiertagService = [getWorkdays: {range -> 2}]
-        def tage = service.getUrlaubstage(false, false, new Date(2011, DECEMBER, 23)..new Date(2011, DECEMBER, 25))
+        def tage = service.getUrlaubstage(false, false, new Date(2010, DECEMBER, 23)..new Date(2010, DECEMBER, 25))
         assertEquals(1.5, tage)
     }
 
-    void testUsesFirstDayFlagAsConfirmationThatChristmasEveIsHalfADay() {
+    void subtractsOnlyHalfADayIfFirstDayIsChristmasEveAndMarkedAsHalf() {
         service.feiertagService = [getWorkdays: {range -> 1}]
-        def tage = service.getUrlaubstage(true, false, new Date(2011, DECEMBER, 24)..new Date(2011, DECEMBER, 25))
+        def tage = service.getUrlaubstage(true, false, new Date(2010, DECEMBER, 24)..new Date(2010, DECEMBER, 25))
         assertEquals(0.5, tage)
     }
 
-    void testUsesLastDayFlagAsConfirmationThatChristmasEveIsHalfADay() {
+    void subtractsOnlyHalfADayIfLastDayIsChristmasEveAndMarkedAsHalf() {
         service.feiertagService = [getWorkdays: {range -> 2}]
-        def tage = service.getUrlaubstage(false, true, new Date(2011, DECEMBER, 23)..new Date(2011, DECEMBER, 24))
+        def tage = service.getUrlaubstage(false, true, new Date(2010, DECEMBER, 23)..new Date(2010, DECEMBER, 24))
         assertEquals(1.5, tage)
     }
 }
