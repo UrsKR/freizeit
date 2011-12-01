@@ -44,6 +44,7 @@
           <root url="jar://$USER_HOME$/.ivy2/cache/bouncycastle/bcmail-jdk14/jars/bcmail-jdk14-136.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/com.lowagie/itext/jars/itext-2.1.0.jar!/" />
           <root url="file://$MODULE_DIR$/lib" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-test/jars/spring-test-3.0.5.RELEASE.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
