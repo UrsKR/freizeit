@@ -11,6 +11,12 @@ class UrlaubstageService_ChristmasTests extends GrailsUnitTestCase {
         service = new UrlaubstageService()
     }
 
+    void testReducesByNothingIfItsNotChristmasEve() {
+        createFeiertagServiceWithWorkdays(2)
+        def tage = service.getUrlaubstage(false, false, new Date(2010, DECEMBER, 22)..new Date(2010, DECEMBER, 23))
+        assertEquals(2, tage)
+    }
+
     void testReducesNumberOfDaysByHalfADayIfChristmasEveIsPartOfRange() {
         createFeiertagServiceWithWorkdays(2)
         def tage = service.getUrlaubstage(false, false, new Date(2010, DECEMBER, 23)..new Date(2010, DECEMBER, 25))
