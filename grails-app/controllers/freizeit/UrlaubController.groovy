@@ -4,11 +4,15 @@ import java.text.SimpleDateFormat
 
 class UrlaubController {
 
+    private static final int oneYearInSeconds = 60 * 60 * 24 * 365
     static defaultAction = 'antrag'
     def urlaubstageService
     def pdfRenderingService
 
     def antrag = { Urlaubsantrag antrag ->
+        antrag.mitarbeiter = request.getCookie("Name") ?: ""
+        //antrag.vorjahresanspruch = request.getCookie("Vorjahresanspruch") ?: 0
+        //antrag.jahresanspruch = request.getCookie("Jahresanspruch") ?: 0
         def days = antrag.numberOfDays
         String text = getTextForNumberOfDays(days)
         flash.message = text
@@ -26,6 +30,11 @@ class UrlaubController {
     }
 
     def pdf = { Urlaubsantrag antrag ->
+        response.setCookie("Name", antrag.mitarbeiter, oneYearInSeconds)
+        //float restVorjahresanspruch = Math.max(antrag.vorjahresanspruch - antrag.numberOfDays, 0)
+        //response.setCookie("Vorjahresanspruch", restVorjahresanspruch as String, oneYearInSeconds)
+        //float restJahresanspruch = antrag.jahresanspruch
+        //response.setCookie("Jahresanspruch", restJahresanspruch as String, oneYearInSeconds)
         pdfRenderingService.render([template: '/urlaub/pdf', model: [antrag: antrag]], response)
     }
 
