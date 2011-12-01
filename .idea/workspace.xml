@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3cb9723f-755d-45cf-9355-9bf9ef7f8899" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application.properties" afterPath="$PROJECT_DIR$/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/freizeit-grailsPlugins.iml" afterPath="$PROJECT_DIR$/freizeit-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/freizeit/UrlaubController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/freizeit/UrlaubController.groovy" />
     </list>
     <ignored path="freizeit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -739,7 +735,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 9" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cookie for the users name" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -769,6 +765,7 @@
     <MESSAGE value="Half a day is subtracted for each of the half days" />
     <MESSAGE value="PDF and Website use the same calculation" />
     <MESSAGE value="Version 9" />
+    <MESSAGE value="Cookie for the users name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
