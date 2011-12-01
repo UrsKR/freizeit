@@ -2,6 +2,7 @@ package freizeit
 
 import grails.test.GrailsUnitTestCase
 import static java.util.Calendar.DECEMBER
+import static java.util.Calendar.JANUARY
 
 class UrlaubstageService_ChristmasTests extends GrailsUnitTestCase {
     def service
@@ -23,15 +24,33 @@ class UrlaubstageService_ChristmasTests extends GrailsUnitTestCase {
         assertEquals(1.5, tage)
     }
 
+     void testReducesNumberOfDaysByHalfADayIfNewYearsEveIsPartOfRange() {
+        createFeiertagServiceWithWorkdays(2)
+        def tage = service.getUrlaubstage(false, false, new Date(2010, DECEMBER, 30)..new Date(2010, DECEMBER, 31))
+        assertEquals(1.5, tage)
+    }
+
     void testSubtractsOnlyHalfADayIfFirstDayIsChristmasEveAndMarkedAsHalf() {
         createFeiertagServiceWithWorkdays(1)
         def tage = service.getUrlaubstage(true, false, new Date(2010, DECEMBER, 24)..new Date(2010, DECEMBER, 25))
         assertEquals(0.5, tage)
     }
 
+      void testSubtractsOnlyHalfADayIfFirstDayIsNewYearsEveAndMarkedAsHalf() {
+        createFeiertagServiceWithWorkdays(1)
+        def tage = service.getUrlaubstage(true, false, new Date(2010, DECEMBER, 31)..new Date(2011, JANUARY, 01))
+        assertEquals(0.5, tage)
+    }
+
     void testSubtractsOnlyHalfADayIfLastDayIsChristmasEveAndMarkedAsHalf() {
         createFeiertagServiceWithWorkdays(2)
         def tage = service.getUrlaubstage(false, true, new Date(2010, DECEMBER, 23)..new Date(2010, DECEMBER, 24))
+        assertEquals(1.5, tage)
+    }
+
+      void testSubtractsOnlyHalfADayIfLastDayIsNewYearsEveAndMarkedAsHalf() {
+        createFeiertagServiceWithWorkdays(2)
+        def tage = service.getUrlaubstage(false, true, new Date(2010, DECEMBER, 30)..new Date(2010, DECEMBER, 31))
         assertEquals(1.5, tage)
     }
 
